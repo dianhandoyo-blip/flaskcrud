@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Halaman {% block judul%} {% endblock %} </title>
+
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/AdminLTE.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='font/sansPro.css')}}">
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+        .content-wrapper {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .content-header h1 {
+            font-size: 26px;
+            margin-bottom: 5px;
+        }
+        .content-header small {
+            font-size: 15px;
+            color: #999;
+        }
+        .box {
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+        }
+        .box-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .box-body {
+            padding: 20px;
+        }
+        table.table th {
+            background-color: #f9f9f9;
+        }
+        table.table td, table.table th {
+            vertical-align: middle;
+            padding: 12px 15px;
+        }
+        .btn-info, .btn-warning, .btn-danger {
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<!-- content area -->
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            <a href="/">
+                <img src="{{ url_for('static', filename='img/amikom_logo.png') }}" style="width: 40px;">
+            </a>
+            Data Mahasiswa
+            <small>Teknik Komputer</small>
+        </h1>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        {% block JudulKonten %} {% endblock %}
+                    </div>
+
+                    <div class="box-body">
+                        {% block konten %} {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/adminlte.min.js')}}"></script>
+
+</body>
+</html>
