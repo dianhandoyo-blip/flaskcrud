@@ -20,7 +20,7 @@ if db.is_connected():
 @app.route('/')
 def halaman_awal():
     cur = db.cursor()
-    cur.execute("SELECT * FROM mahasiswa")
+    cur.execute("SELECT * FROM tbl_mahasiswa")
     res = cur.fetchall()
     cur.close()
     return render_template('index.html', hasil=res)
@@ -40,7 +40,7 @@ def proses_tambah():
     asal = request.form['asal']
 
     cur = db.cursor()
-    sql = "INSERT INTO mahasiswa (nim, nama, asal) VALUES (%s, %s, %s)"
+    sql = "INSERT INTO tbl_mahasiswa (nim, nama, asal) VALUES (%s, %s, %s)"
     cur.execute(sql, (nim, nama, asal))
     db.commit()
     cur.close()
@@ -52,7 +52,7 @@ def proses_tambah():
 @app.route('/ubah/<nim>')
 def ubah_data(nim):
     cur = db.cursor()
-    cur.execute("SELECT * FROM mahasiswa WHERE nim=%s", (nim,))
+    cur.execute("SELECT * FROM tbl_mahasiswa WHERE nim=%s", (nim,))
     res = cur.fetchone()
     cur.close()
 
@@ -68,7 +68,7 @@ def proses_ubah():
     asal = request.form['asal']
 
     cur = db.cursor()
-    sql = "UPDATE mahasiswa SET nim=%s, nama=%s, asal=%s WHERE nim=%s"
+    sql = "UPDATE tbl_mahasiswa SET nim=%s, nama=%s, asal=%s WHERE nim=%s"
     value = (nim, nama, asal, nim_lama)
     cur.execute(sql, value)
     db.commit()
@@ -81,7 +81,7 @@ def proses_ubah():
 @app.route('/hapus/<nim>')
 def hapus_data(nim):
     cur = db.cursor()
-    cur.execute("DELETE FROM mahasiswa WHERE nim=%s", (nim,))
+    cur.execute("DELETE FROM tbl_mahasiswa WHERE nim=%s", (nim,))
     db.commit()
     cur.close()
 
