@@ -44,21 +44,25 @@ def tambah_data():
 # =======================
 @app.route('/proses_tambah/', methods=['POST'])
 def proses_tambah():
-    nim = request.form['nim']
-    nama = request.form['nama']
-    asal = request.form['asal']
+    try:
+        nim = request.form['nim']
+        nama = request.form['nama']
+        asal = request.form['asal']
 
-    db = get_db()
-    cur = db.cursor()
+        db = get_db()
+        cur = db.cursor()
 
-    sql = "INSERT INTO tbl_mahasiswa (nim, nama, asal) VALUES (%s, %s, %s)"
-    cur.execute(sql, (nim, nama, asal))
-    db.commit()
+        sql = "INSERT INTO tbl_mahasiswa (nim, nama, asal) VALUES (%s, %s, %s)"
+        cur.execute(sql, (nim, nama, asal))
+        db.commit()
 
-    cur.close()
-    db.close()
+        cur.close()
+        db.close()
 
-    return redirect(url_for('halaman_awal'))
+        return redirect(url_for('halaman_awal'))
+
+    except Exception as e:
+        return str(e)
 
 
 # =======================
