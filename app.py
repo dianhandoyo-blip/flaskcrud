@@ -29,7 +29,7 @@ def halaman_awal():
 # FORM TAMBAH
 @app.route('/tambah/')
 def tambah_data():
-    return render_template('tambah.html')
+    return "OK"
 
 
 # PROSES TAMBAH
